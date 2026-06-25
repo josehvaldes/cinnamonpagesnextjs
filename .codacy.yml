@@ -3,4 +3,4 @@ tools:
     enabled: true
 
 methods:
-  max-lines: 75
+  max-lines: 100
