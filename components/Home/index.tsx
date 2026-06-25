@@ -12,15 +12,6 @@ const Home = () => {
         <Button>
           Cinnamon Pages button
         </Button>
-        <Separator className="my-3" />
-        <Image
-            className="dark:invert"
-            src="/next.svg"
-            alt="Next.js logo"
-            width={100}
-            height={20}
-            priority
-          />
     </div>
     );
 }

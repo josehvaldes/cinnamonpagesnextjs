@@ -1,0 +1,6 @@
+tools:
+  lizard:
+    enabled: true
+
+methods:
+  max-lines: 75
