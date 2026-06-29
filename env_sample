@@ -3,7 +3,7 @@ NEXT_PUBLIC_ENABLE_MOCKS = false
 #server only
 API_BASE_URL = https://theapiurl/api
 API_KEY = your-api-key-here
+API_VERSION = v1
 
 #client only
-NEXT_PUBLIC_API_BASE_URL = https://theapiurl/api
-
+NEXT_PUBLIC_S3_BUCKET_URL = https://cdn.yourdns.com

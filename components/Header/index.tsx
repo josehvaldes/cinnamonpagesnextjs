@@ -26,7 +26,11 @@ const Header = () => {
             <div className="col-start-2 col-end-4 hidden md:flex items-center justify-center gap-8">
               <ul className="flex gap-8">
                 {navItems.map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item}>
+                    <a href={`/${item.toLowerCase()}`} className="hover:underline">
+                      {item}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
