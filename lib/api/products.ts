@@ -1,27 +1,36 @@
 import "server-only";
 import { getRequest } from "./genericRequest";
+import { LinkResponse } from "./generictypes";
 
+interface ProductResponse {
+    id: string;
+    name: string;
+    price: number;
+    img: string;
+    links : LinkResponse[];
+}
 
-export async function getProduct(id: string): Promise<any> {
-    return getRequest<any>(`products/${id}`, {
+interface ProductListResponse {
+    items: ProductResponse[];
+    totalCount: number;
+    pageNumber: number;
+    pageSize: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+}
+
+export async function getProduct(id: string): Promise<ProductResponse> {
+    return getRequest<ProductResponse>(`products/${id}`, {
         cache: "force-cache" // Use cache for product data to improve performance
     });
 }
 
-export async function getProducts(): Promise<any[]> {
-    const data = await getRequest<any>("products", {
+export async function getProducts(): Promise<ProductResponse[]> {
+    const data = await getRequest<ProductListResponse>("products", {
         cache: "force-cache" // Use cache for product data to improve performance
     });
 
-    /**
-        items: [...]
-        totalCount: 8,
-        pageNumber: 1,
-        pageSize: 20,
-        totalPages: 1,
-        hasNextPage: false,
-        hasPreviousPage: false
-    */
     const items = data.items || data; // Adjust based on your API response structure
     return items;
 }
