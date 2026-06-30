@@ -1,6 +1,7 @@
 import "server-only";
 import { getRequest } from "./genericRequest";
 import { ProductListResponse, ProductResponse } from "./responseTypes";
+import { PaginationRequest } from "./requestTypes";
 
 export async function getProduct(id: string): Promise<ProductResponse> {
     return getRequest<ProductResponse>(`products/${id}`, {
@@ -8,8 +9,12 @@ export async function getProduct(id: string): Promise<ProductResponse> {
     });
 }
 
-export async function getProducts(): Promise<ProductResponse[]> {
-    const data = await getRequest<ProductListResponse>("products", {
+export async function getProducts(request: PaginationRequest): Promise<ProductResponse[]> {
+    const queryParams = new URLSearchParams({
+        pageNumber: request.pageNumber.toString(),
+        pageSize: request.pageSize.toString()
+    });
+    const data = await getRequest<ProductListResponse>(`products?${queryParams.toString()}`, {
         cache: "force-cache" // Use cache for product data to improve performance
     });
 

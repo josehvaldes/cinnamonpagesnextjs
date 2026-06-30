@@ -15,8 +15,8 @@ export async function getProductById(id: string): Promise<Product | null> {
     }
 
 }
-export async function getProductsAll(): Promise<Product[]> {
-    const dtos = await getProducts();
+export async function getProductsAll(pageNumber: number, pageSize: number): Promise<Product[]> {
+    const dtos = await getProducts({ pageNumber, pageSize }); // Adjust pageNumber and pageSize as needed
     // Map the DTOs to the Product type for testing purposes
     return dtos.map(dto => ({
         id : dto.id,
