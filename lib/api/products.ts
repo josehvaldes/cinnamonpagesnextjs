@@ -9,7 +9,7 @@ export async function getProduct(id: string): Promise<ProductResponse> {
     });
 }
 
-export async function getProducts(request: PaginationRequest): Promise<ProductResponse[]> {
+export async function getProducts(request: PaginationRequest): Promise<ProductListResponse> {
     const queryParams = new URLSearchParams({
         pageNumber: request.pageNumber.toString(),
         pageSize: request.pageSize.toString()
@@ -17,7 +17,5 @@ export async function getProducts(request: PaginationRequest): Promise<ProductRe
     const data = await getRequest<ProductListResponse>(`products?${queryParams.toString()}`, {
         cache: "force-cache" // Use cache for product data to improve performance
     });
-
-    const items = data.items || data; // Adjust based on your API response structure
-    return items;
+    return data
 }

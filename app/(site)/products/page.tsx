@@ -12,10 +12,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const pageValue = Array.isArray(params.page) ? params.page[0] : params.page;
   const parsedPage = Number.parseInt(pageValue ?? "1", 10);
   const activePage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
-  const pageSize = 3;
-  const products = await getProductsAll(activePage, pageSize);
-  const hasPreviousPage = activePage > 1;
-  const hasNextPage = products.length === pageSize;
+  const pageSize = 4; // hardcoded page size for demonstration purposes, you can adjust this as needed
+  const [products, hasPreviousPage, hasNextPage] = await getProductsAll(activePage, pageSize);
   
   return (
     <Products
