@@ -61,7 +61,9 @@ const Header = () => {
                     className="w-full px-4 py-3 text-left hover:bg-muted transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {item}
+                    <a href={`/${item.toLowerCase()}`} className="hover:underline">
+                      {item}
+                    </a>
                   </button>
                 </li>
               ))}

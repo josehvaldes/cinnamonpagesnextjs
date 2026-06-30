@@ -1,24 +1,6 @@
 import "server-only";
 import { getRequest } from "./genericRequest";
-import { LinkResponse } from "./generictypes";
-
-interface ProductResponse {
-    id: string;
-    name: string;
-    price: number;
-    img: string;
-    links : LinkResponse[];
-}
-
-interface ProductListResponse {
-    items: ProductResponse[];
-    totalCount: number;
-    pageNumber: number;
-    pageSize: number;
-    totalPages: number;
-    hasNextPage: boolean;
-    hasPreviousPage: boolean;
-}
+import { ProductListResponse, ProductResponse } from "./responseTypes";
 
 export async function getProduct(id: string): Promise<ProductResponse> {
     return getRequest<ProductResponse>(`products/${id}`, {
