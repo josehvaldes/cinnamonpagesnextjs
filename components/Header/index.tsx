@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Heart, ShoppingBag, Menu, X } from "lucide-react";
 import { useState } from "react";
+import WishListButton from "./wishlistButton";
 
 const navItems = ["Products", "About", "Contact"];
 
@@ -42,7 +43,7 @@ const Header = () => {
             
             <div className="col-start-5 col-end-6 flex items-center justify-end gap-8">
               <div className="flex flex-col gap-2">
-                <Heart className="size-5" />
+                <WishListButton />
               </div>
               <div className="flex flex-col gap-2">
                 <ShoppingBag className="size-5" />

@@ -1,6 +1,7 @@
 import { Product } from "../../../types/product";
 
 import { getImageUrl } from "../../../utils/getImageUrl";
+import AddWishListButton from "./addWishListButton";
 
 const ProductMiniCard = ({ product }: { product: Product }) => {
   return (
@@ -21,6 +22,9 @@ const ProductMiniCard = ({ product }: { product: Product }) => {
           </div>
           <div className="flex items-center justify-start underline sm:ml-auto sm:justify-end">
             <a href={`/product/${product.id}`}>View Details</a>
+          </div>
+          <div>
+            <AddWishListButton {...product} />
           </div>
         </div>
       </li>
