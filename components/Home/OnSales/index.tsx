@@ -1,18 +1,17 @@
 import { Product } from "@/types/product";
 import ProductCard from "./productCard";
 
-type NewArrivalsProps = {
-    newArrivals: Product[];
+type OnSalesProps = {
+    onSales: Product[];
 };
 
-const NewArrivals = ({ newArrivals }: NewArrivalsProps) => {
-
-  return (
-    <>
+const OnSales = ({ onSales }: OnSalesProps) => {
+    return (
+        <>
         <div className="grid grid-cols-4 gap-3 w-full p-4">
             <div className="col-start-1 col-end-2 flex flex-col gap-2">
-            <span className="font-light text-xs text-gray-500" >Check out latest products</span>
-            <p className="text-lg font-semibold">New Arrivals</p>
+            <span className="font-light text-xs text-gray-500" >Check out our products on sale</span>
+            <p className="text-lg font-semibold">On Sale</p>
             </div>
             <div className="col-start-4 col-end-5 flex items-center justify-end">
 
@@ -21,19 +20,19 @@ const NewArrivals = ({ newArrivals }: NewArrivalsProps) => {
                 View All</a>
             </div>
         </div>
-        {newArrivals.length === 0 && (
+
+        {onSales.length === 0 && (
                 <div className="flex items-center justify-center w-full">
-                    <p className="text-sm text-gray-500">No new arrivals available.</p>
+                    <p className="text-sm text-gray-500">No products on sale available.</p>
                 </div>
             )}
         <div className="flex flex-wrap justify-center gap-4 p-4 sm:justify-start sm:gap-6">
-            {newArrivals && newArrivals.length > 0 && newArrivals.map((item, index) => (
+            {onSales && onSales.length > 0 && onSales.map((item, index) => (
                 <ProductCard key={index} product={item} />
             ))}
         </div>
-
-    </>
-  );
+        </>
+    );
 }
 
-export default NewArrivals;
+export default OnSales;

@@ -1,5 +1,6 @@
 import Home from "@/components/Home";
 import { healthCheckStatus } from "@/lib/api/health";
+import { getHomepageContent } from "@/services/productService";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,9 +23,10 @@ export default async function HomePage() {
     healthStatus = "Unavailable";
   }
 
+  const products = await getHomepageContent();
   return (
     <>
-    <Home healthStatus={healthStatus} />
+    <Home healthStatus={healthStatus} newArrivals={products.newArrivals} trendings={products.trendings} onSales={products.onSales} />
     </>        
   );
 }

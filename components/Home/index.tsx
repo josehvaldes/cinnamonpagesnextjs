@@ -1,21 +1,27 @@
-import { Button } from "@/components/ui/button";
 import Hero from "./Hero";
+import NewArrivals from "./NewArrivals";
+import OnSales from "./OnSales";
+import TrendingProducts from "./TrendingProducts";
 
 type HomeProps = {
    healthStatus: string;
+   newArrivals: any[];
+   trendings: any[];
+   onSales: any[];
 };
 
-const Home = ({ healthStatus }: HomeProps) => {
+const Home = ({ healthStatus, newArrivals, trendings, onSales }: HomeProps) => {
 
    return (
     <>
        <Hero />
-       
-       <p>health check status: {healthStatus}</p>
-       
-       <Button>
-          Cinnamon Pages button
-       </Button>
+       <NewArrivals newArrivals={newArrivals} />
+       <TrendingProducts trendings={trendings} />
+       <OnSales onSales={onSales} />
+
+       <div className="w-full flex justify-end p-4">
+          <p className="text-xs text-gray-500">API Status: {healthStatus}</p>
+       </div>
     </>
     );
 }

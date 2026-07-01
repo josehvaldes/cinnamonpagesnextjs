@@ -1,6 +1,6 @@
 import "server-only";
 import { getRequest } from "./genericRequest";
-import { ProductListResponse, ProductResponse } from "./responseTypes";
+import { ProductHomepageResponse, ProductListResponse, ProductResponse } from "./responseTypes";
 import { PaginationRequest } from "./requestTypes";
 
 export async function getProduct(id: string): Promise<ProductResponse> {
@@ -18,4 +18,11 @@ export async function getProducts(request: PaginationRequest): Promise<ProductLi
         cache: "force-cache" // Use cache for product data to improve performance
     });
     return data
+}
+
+export async function getHomepageProducts(): Promise<ProductHomepageResponse> {
+    console.log("Fetching homepage products...");
+    return getRequest<ProductHomepageResponse>(`homepage`, {
+        cache: "force-cache" // Use cache for product data to improve performance
+    });
 }

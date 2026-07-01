@@ -31,5 +31,10 @@ interface ProductListResponse {
     hasPreviousPage: boolean;
 }
 
+interface ProductHomepageResponse {
+    newArrivals: ProductResponse[];
+    trendings: ProductResponse[];
+    onSales: ProductResponse[];
+}
 
-export type { HateoasLinkResponse, UserResponse, ProductResponse, ProductListResponse };
+export type { HateoasLinkResponse, UserResponse, ProductResponse, ProductListResponse, ProductHomepageResponse };
