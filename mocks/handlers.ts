@@ -1,5 +1,5 @@
 import { delay, http, HttpResponse } from 'msw';
-import { heroData } from './mockData';
+import { heroData, mockProducts } from './mockData';
 
 const ENDPOINT_LATENCY_MS = {
     health: { base: 120, jitter: 80 },
@@ -27,6 +27,25 @@ export const handlers = [
     http.get(/\/v1\/homepage\/hero$/i, async () => {
         await simulateLatency('homepage');
         return HttpResponse.json(heroData);
+    }),
+    http.get(/\/v1\/homepage$/i, async () => {
+        await simulateLatency('homepage');
+        return HttpResponse.json( {
+                "trendings": [
+                        mockProducts[2],
+                        mockProducts[1],
+                        mockProducts[0]
+                ],
+                "newArrivals": [
+                        mockProducts[6],
+                        mockProducts[7]
+                ],
+                "onSales": [
+                        mockProducts[4],
+                        mockProducts[3],
+                        mockProducts[5]
+                ]
+        });
     })
    
 ]
